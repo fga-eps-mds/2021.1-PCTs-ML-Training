@@ -5,3 +5,14 @@
 # 2021.1-PCTs-ML-Training
 
 Repositório com modelos de Machine Learning do projeto  "Povos e Comunidades Tradicionais"
+
+## Contribuição
+
+1. Clone io repositório
+2. Crie uma branch (`git checkout -b feat/x-branch-name`)
+3. Commit suas alterações (`git commit -am "Add feat"`)
+4. Push para a branch (`git push origin feat/x-branch-name`)
+
+### Extras
+
+- [Guia completo de contribuição completo](https://github.com/fga-eps-mds/2021.1-PCTs-Docs/blob/main/CONTRIBUTING.md)
