@@ -4,3 +4,4 @@ jupyterlab
 scikit-learn
 ipykernel
 metaflow
+pyarrow
