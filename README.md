@@ -16,3 +16,30 @@ Repositório com modelos de Machine Learning do projeto  "Povos e Comunidades Tr
 ### Extras
 
 - [Guia completo de contribuição completo](https://github.com/fga-eps-mds/2021.1-PCTs-Docs/blob/main/CONTRIBUTING.md)
+
+
+## Utilização do repo
+
+### Preparando o ambiente
+1. Crie um virtual environment python com o comando:
+```bash
+    python3 -m venv <virtual_env_name>
+```
+2. Ative o ambiente virtual com o comando:
+```bash
+    source <virtual_env_name>/bin/activate
+```
+3. Instale as dependeências:
+```bash
+    pip install -r requirements.txt
+```
+4. Adicionando a envrinoment criado ao `ipykernel`:
+```bash
+    python3 -m ipykernel install --name <virtual_env_name>
+```
+
+## Iniciando o jupyterlab
+Com o virtual environment ativado, utilize o comando:
+```bash
+    jupyter lab
+```
