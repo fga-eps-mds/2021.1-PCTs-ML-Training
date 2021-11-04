@@ -34,3 +34,12 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ steps.extract_branch.outputs.branch }}
         commit: "📦 NEW: Add model report"
+        author_name: Caio Fernandes
+        author_email: caiovf13@gmail.com
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ steps.extract_branch.outputs.branch }}
+        path: |
+          Data/model_versioning/model_v1.p
+          Data/model_versioning/vectorizer_v1.p
