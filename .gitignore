@@ -1,5 +1,6 @@
+
 EPSvenv/
-.metaflow/
+.metaflow
 
 # Macos Desktop Service Store
 .DS_Store

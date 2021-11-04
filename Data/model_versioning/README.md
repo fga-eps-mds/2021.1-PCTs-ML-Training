@@ -1,0 +1,1 @@
+This folder will store the model and vectorizer versions.
