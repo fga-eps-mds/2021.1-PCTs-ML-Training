@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import ConfusionMatrixDisplay
 import os
+import pickle
 
 
 def classification_report_to_md(report):
@@ -103,7 +104,7 @@ class ClassificadorPCTS(FlowSpec):
                   default='./Data/training_data/df_v1.parquet.gzip')
     model_version = Parameter('model_version',
                   help='Model version',
-                  default='5')
+                  default='1')
     max_df = Parameter('max_df',
                   help='When building the vocabulary ignore terms that have a document frequency strictly higher than the given threshold',
                   default=1.0) #0.5
@@ -198,6 +199,9 @@ class ClassificadorPCTS(FlowSpec):
         README = export_README(type(self).__name__, self.path, global_dist, totals, self.report, self.Ytest, self.pred)
         with open(f'ModelReport_V{self.model_version}.md', 'w') as f:
             f.write(README)
+
+        pickle.dump(self.model, open(f"Data/model_versioning/model_v{self.model_version}.p", "wb"))
+        pickle.dump(self.vectorizer, open(f"Data/model_versioning/vectorizer_v{self.model_version}.p", "wb"))
 
 
 if __name__ == "__main__":
