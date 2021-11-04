@@ -13,18 +13,24 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - uses: actions/checkout@master
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
     - name: Create local changes
       run: |
         python metaflow_classifier_report.py run
-    - name: Inject slug/short variables
-      uses: rlespinasse/github-slug-action@v3.x
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{env.GITHUB_REF_SLUG_URL}}
+        branch: ${{ steps.extract_branch.outputs.branch }}
         commit: "📦 NEW: Add model report"
