@@ -6,13 +6,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.x
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
-    - name: Install Python 3.x dependencies
+        python-version: '3.9'
+    - name: Install Python 3.9 dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip3 install -r requirements.txt
+        pip install -r requirements.txt
     - uses: actions/checkout@master
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
