@@ -44,5 +44,5 @@ jobs:
       with:
         name: ${{ env.GITHUB_REF_SLUG }}
         path: |
-          Data/model_versioning/model_v2.p
-          Data/model_versioning/vectorizer_v2.p
+          Data/model_versioning/model_v3.p
+          Data/model_versioning/vectorizer_v3.p
