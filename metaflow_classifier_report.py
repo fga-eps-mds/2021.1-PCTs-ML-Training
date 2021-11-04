@@ -101,6 +101,9 @@ class ClassificadorPCTS(FlowSpec):
     path = Parameter('path',
                   help='Dataset path',
                   default='./Data/training_data/df_v1.parquet.gzip')
+    model_version = Parameter('model_version',
+                  help='Model version',
+                  default='5')
     max_df = Parameter('max_df',
                   help='When building the vocabulary ignore terms that have a document frequency strictly higher than the given threshold',
                   default=1.0) #0.5
@@ -193,7 +196,7 @@ class ClassificadorPCTS(FlowSpec):
         totals = {'global':len(self.dataframe), 'train': len(self.Ytrain), 'test': len(self.Ytest) }
         
         README = export_README(type(self).__name__, self.path, global_dist, totals, self.report, self.Ytest, self.pred)
-        with open('ModelReport.md', 'w') as f:
+        with open(f'ModelReport_V{self.model_version}.md', 'w') as f:
             f.write(README)
 
 
