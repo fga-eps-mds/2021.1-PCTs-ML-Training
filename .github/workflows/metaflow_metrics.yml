@@ -1,8 +1,4 @@
-on: 
-  push:
-    branches:
-    - '!master'
-    - '!dev'
+on: push
 
 jobs:
   build:
