@@ -101,10 +101,10 @@ class ClassificadorPCTS(FlowSpec):
                       default=0.2)
     path = Parameter('path',
                   help='Dataset path',
-                  default='./Data/training_data/df_v2.parquet.gzip')
+                  default='./Data/training_data/df_v4.parquet.gzip')
     model_version = Parameter('model_version',
                   help='Model version',
-                  default='2')
+                  default='4')
     max_df = Parameter('max_df',
                   help='When building the vocabulary ignore terms that have a document frequency strictly higher than the given threshold',
                   default=1.0) #0.5
@@ -119,9 +119,10 @@ class ClassificadorPCTS(FlowSpec):
         
         self.dataframe = pd.read_parquet(self.path)
         self.dataframe = self.dataframe[~self.dataframe.y.isna()]
-        self.dataframe
-        self.dataframe = self.dataframe[self.dataframe.y.isin(['Território', 'Quilombolas', 'Território;Quilombolas', 'identidade', 'Conflito', 'identidade e território', 'identidade e território'])]
 
+        aux_df = dict(self.dataframe.y.value_counts())
+        classes = [key for key, value in aux_df.items() if value > 10]
+        self.dataframe = self.dataframe[self.dataframe.y.isin(classes)]
         self.next(self.transform_data)
 
     @step
