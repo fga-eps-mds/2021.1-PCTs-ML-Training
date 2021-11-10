@@ -119,8 +119,10 @@ class ClassificadorPCTS(FlowSpec):
         
         self.dataframe = pd.read_parquet(self.path)
         self.dataframe = self.dataframe[~self.dataframe.y.isna()]
-        # self.dataframe = self.dataframe[self.dataframe.y.isin(['Território', 'Quilombolas', 'Território;Quilombolas', 'identidade', 'Conflito', 'identidade e território', 'identidade e território'])]
 
+        aux_df = dict(self.dataframe.y.value_counts())
+        classes = [key for key, value in aux_df.items() if value > 8]
+        self.dataframe = self.dataframe[self.dataframe.y.isin(classes)]
         self.next(self.transform_data)
 
     @step
