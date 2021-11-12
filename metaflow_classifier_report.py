@@ -121,7 +121,7 @@ class ClassificadorPCTS(FlowSpec):
         self.dataframe = self.dataframe[~self.dataframe.y.isna()]
 
         aux_df = dict(self.dataframe.y.value_counts())
-        classes = [key for key, value in aux_df.items() if value > 8]
+        classes = [key for key, value in aux_df.items() if value > 10]
         self.dataframe = self.dataframe[self.dataframe.y.isin(classes)]
         self.next(self.transform_data)
 
